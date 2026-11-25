@@ -1,0 +1,43 @@
+[project]
+name = "wormholeborer"
+version = "0.1.0"
+description = "Create and destroy a disposable private Magic Wormhole server on Linode"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+wormholeborer = "wormholeborer.cli:main"
+
+[dependency-groups]
+dev = ["pytest==9.2.0", "ruff==0.17.6", "ty==0.0.110"]
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "C90", "PT", "SIM", "TID", "PL", "RUF", "D"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
+
+[tool.ruff.lint.pylint]
+max-args = 5
+max-positional-args = 5
+max-statements = 50
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D", "PLR2004"]
+
+[tool.ty.rules]
+possibly-unresolved-reference = "error"
